@@ -6,20 +6,21 @@
     app:startDestination="@+id/sample_id">
 
     <fragment
-        android:id="@+id/create_operator_id"
-        android:name="com.demo.code.ui.operators.CreateOperatorFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_operator_create" />
-
-    <fragment
         android:id="@+id/sample_id"
         android:name="com.demo.code.ui.sample.SampleFragment"
         android:label="@string/menu_sample"
         tools:layout="@layout/fragment_sample" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.demo.code.ui.slideshow.SlideshowFragment"
+        android:id="@+id/create_operator_id"
+        android:name="com.demo.code.ui.operators.CreateOperatorFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_operator_create" />
+
+    <fragment
+        android:id="@+id/just_operator_id"
+        android:name="com.demo.code.ui.operators.JustOperatorFragment"
         android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        tools:layout="@layout/fragment_operator_just" />
+
 </navigation>

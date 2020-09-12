@@ -16,8 +16,8 @@
             android:title="@string/menu_create_operator" />
 
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/just_operator_id"
             android:icon="@drawable/ic_three"
-            android:title="@string/menu_slideshow" />
+            android:title="@string/str_just_operator" />
     </group>
 </menu>

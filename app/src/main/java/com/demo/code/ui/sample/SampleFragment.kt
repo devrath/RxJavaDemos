@@ -63,7 +63,7 @@ class SampleFragment : Fragment() {
 
     private fun onClickListeners() {
         binding.floatingActionButton.setOnClickListener {
-            taskList.add(Task("Task-1", false))
+
         }
     }
 
@@ -81,9 +81,9 @@ class SampleFragment : Fragment() {
     }
 
     private fun createTasks(): ArrayList<Task> {
-        taskList.add(Task("Task-1", false))
-        taskList.add(Task("Task-2", false))
-        taskList.add(Task("Task-3", false))
+        taskList.add(Task("Task-1", false,1))
+        taskList.add(Task("Task-2", false,2))
+        taskList.add(Task("Task-3", false,3))
         return taskList
     }
 

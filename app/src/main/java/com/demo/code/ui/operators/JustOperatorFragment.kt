@@ -5,10 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.demo.code.databinding.FragmentOperatorCreateBinding
+import com.demo.code.databinding.FragmentOperatorJustBinding
 import com.demo.code.models.Task
 import io.reactivex.Observable
-import io.reactivex.ObservableOnSubscribe
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -16,10 +15,10 @@ import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
 
 
-class CreateOperatorFragment : Fragment() {
+class JustOperatorFragment : Fragment(){
 
-    private val TAG = CreateOperatorFragment::class.java.simpleName
-    private var _binding: FragmentOperatorCreateBinding? = null
+    private val TAG = JustOperatorFragment::class.java.simpleName
+    private var _binding: FragmentOperatorJustBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -27,7 +26,7 @@ class CreateOperatorFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentOperatorCreateBinding.inflate(inflater, container, false)
+        _binding = FragmentOperatorJustBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -43,31 +42,23 @@ class CreateOperatorFragment : Fragment() {
 
     private fun onClickListeners() {
         binding.floatingActionButton.setOnClickListener {
-            init()
+            subscribeToObservable()
         }
-    }
-
-    private fun init() {
-        subscribeToObservable()
     }
 
     /**
      * Step1: Instantiate the object
      */
     private fun instantiateObject(): Task {
-        return  Task("Task1", false, 3)
+        return Task("Task1", false, 3)
     }
 
     /**
      * Step2: Create the observable from the instantiated object
      */
-    private fun createObservable(): Observable<Task> {
-        return Observable.create(ObservableOnSubscribe<Task> { emitter ->
-            if (!emitter.isDisposed) {
-                emitter.onNext(instantiateObject())
-                emitter.onComplete()
-            }
-        }).subscribeOn(Schedulers.io())
+    private fun createObservable() : Observable<Task> {
+        return Observable.just(instantiateObject())
+            .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }
 
@@ -75,7 +66,7 @@ class CreateOperatorFragment : Fragment() {
      * Step3: Subscribe to the observable and the emitted object
      */
     private fun subscribeToObservable() {
-        createObservable().subscribe(object : Observer<Task>{
+        createObservable().subscribe(object:Observer<Task>{
             override fun onSubscribe(d: Disposable) {
                 Timber.tag(TAG).d("Subscribe Invoked")
             }
@@ -93,6 +84,5 @@ class CreateOperatorFragment : Fragment() {
             }
         })
     }
-
 
 }
