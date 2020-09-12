@@ -3,19 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
+    app:startDestination="@+id/sample_id">
 
     <fragment
-        android:id="@+id/nav_home"
-        android:name="com.demo.code.ui.home.HomeFragment"
+        android:id="@+id/create_operator_id"
+        android:name="com.demo.code.ui.operators.CreateOperatorFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_operator_create" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.demo.code.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/sample_id"
+        android:name="com.demo.code.ui.sample.SampleFragment"
+        android:label="@string/menu_sample"
+        tools:layout="@layout/fragment_sample" />
 
     <fragment
         android:id="@+id/nav_slideshow"
