@@ -29,4 +29,10 @@
         android:label="@string/str_interval_operator"
         tools:layout="@layout/fragment_operator_interval" />
 
+    <fragment
+        android:id="@+id/timer_operator_id"
+        android:name="com.demo.code.ui.operators.TimerOperatorFragment"
+        android:label="@string/str_timer_operator"
+        tools:layout="@layout/fragment_operator_interval" />
+
 </navigation>

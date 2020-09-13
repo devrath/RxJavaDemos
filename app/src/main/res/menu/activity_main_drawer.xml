@@ -24,5 +24,11 @@
             android:id="@+id/interval_operator_id"
             android:icon="@drawable/ic_four"
             android:title="@string/str_interval_operator" />
+
+        <item
+            android:id="@+id/timer_operator_id"
+            android:icon="@drawable/ic_five"
+            android:title="@string/str_timer_operator" />
+
     </group>
 </menu>
