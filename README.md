@@ -13,8 +13,10 @@ This project is used to demonstrate the use of RxJava with RxAndroid in Android 
 - [x] Just Operator
 - [x] Interval Operator
 - [x] Timer Operator 
-- [x] From Array Operator 
-- [x] From Iterable Operator 
+- [x] Array Operator 
+- [x] Iterable Operator 
+- [x] Filter Operator 
+- [x] Distinct Operator 
 
 **Snapshot of demo**
 
