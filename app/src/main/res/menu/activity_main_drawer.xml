@@ -19,5 +19,10 @@
             android:id="@+id/just_operator_id"
             android:icon="@drawable/ic_three"
             android:title="@string/str_just_operator" />
+
+        <item
+            android:id="@+id/interval_operator_id"
+            android:icon="@drawable/ic_four"
+            android:title="@string/str_interval_operator" />
     </group>
 </menu>

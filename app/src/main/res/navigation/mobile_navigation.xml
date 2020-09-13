@@ -8,19 +8,25 @@
     <fragment
         android:id="@+id/sample_id"
         android:name="com.demo.code.ui.sample.SampleFragment"
-        android:label="@string/menu_sample"
+        android:label="@string/str_sample"
         tools:layout="@layout/fragment_sample" />
 
     <fragment
         android:id="@+id/create_operator_id"
         android:name="com.demo.code.ui.operators.CreateOperatorFragment"
-        android:label="@string/menu_home"
+        android:label="@string/str_create_operator"
         tools:layout="@layout/fragment_operator_create" />
 
     <fragment
         android:id="@+id/just_operator_id"
         android:name="com.demo.code.ui.operators.JustOperatorFragment"
-        android:label="@string/menu_slideshow"
+        android:label="@string/str_just_operator"
         tools:layout="@layout/fragment_operator_just" />
+
+    <fragment
+        android:id="@+id/interval_operator_id"
+        android:name="com.demo.code.ui.operators.IntervalOperatorFragment"
+        android:label="@string/str_interval_operator"
+        tools:layout="@layout/fragment_operator_interval" />
 
 </navigation>
