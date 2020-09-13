@@ -17,5 +17,9 @@
     <string name="str_just_operator">Just Operator</string>
     <string name="str_interval_operator">Interval Operator</string>
     <string name="str_timer_operator">Timer Operator</string>
+    <string name="str_from_array_operator">From Array Operator</string>
+    <string name="str_from_iterable_operator">From Iterable Operator</string>
     <string name="menu_create_operator">Create Operator</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

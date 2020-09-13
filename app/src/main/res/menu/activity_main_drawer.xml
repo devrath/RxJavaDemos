@@ -30,5 +30,15 @@
             android:icon="@drawable/ic_five"
             android:title="@string/str_timer_operator" />
 
+        <item
+            android:id="@+id/from_array_operator_id"
+            android:icon="@drawable/ic_six"
+            android:title="@string/str_from_array_operator" />
+
+        <item
+            android:id="@+id/from_iterable_operator_id"
+            android:icon="@drawable/ic_seven"
+            android:title="@string/str_from_iterable_operator" />
+
     </group>
 </menu>

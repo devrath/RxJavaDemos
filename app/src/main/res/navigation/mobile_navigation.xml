@@ -35,4 +35,16 @@
         android:label="@string/str_timer_operator"
         tools:layout="@layout/fragment_operator_interval" />
 
+    <fragment
+        android:id="@+id/from_array_operator_id"
+        android:name="com.demo.code.ui.operators.FromArrayOperator"
+        android:label="@string/str_from_array_operator"
+        tools:layout="@layout/fragment_operator_from_array" />
+
+    <fragment
+        android:id="@+id/from_iterable_operator_id"
+        android:name="com.demo.code.ui.operators.FromIterableOperator"
+        android:label="@string/str_from_array_operator"
+        tools:layout="@layout/fragment_operator_from_iterable" />
+
 </navigation>
