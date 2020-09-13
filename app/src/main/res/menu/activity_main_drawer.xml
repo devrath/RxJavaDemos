@@ -40,5 +40,15 @@
             android:icon="@drawable/ic_seven"
             android:title="@string/str_from_iterable_operator" />
 
+        <item
+            android:id="@+id/filter_operator_id"
+            android:icon="@drawable/ic_eight"
+            android:title="@string/str_filter_operator" />
+
+        <item
+            android:id="@+id/distinct_operator_id"
+            android:icon="@drawable/ic_nine"
+            android:title="@string/str_distinct_operator" />
+
     </group>
 </menu>

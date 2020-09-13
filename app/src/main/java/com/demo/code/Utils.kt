@@ -16,7 +16,7 @@ object  Utils {
     fun getListOfTasks(): MutableList<Task> {
         val list: MutableList<Task> = ArrayList()
         list.add(Task("Task1", true, 3))
-        list.add(Task("Task2", false, 2))
+        list.add(Task("Task2", false, 3))
         list.add(Task("Task3", true, 1))
         list.add(Task("Task4", false, 0))
         list.add(Task("Task5", true, 5))
