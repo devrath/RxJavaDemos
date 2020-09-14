@@ -7,8 +7,6 @@ This project is used to demonstrate the use of RxJava with RxAndroid in Android 
 ![rxAndroid](https://img.shields.io/badge/Tool-RxAndroid-orange)
 
 
-**Operators** 
-
 | Creational Operators  |     Filter Operators    | Transformation Operators |
 | --------------------  | ----------------------- | ------------------------ |
 | Create                | Filter                  | Map                      |
