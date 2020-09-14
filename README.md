@@ -9,14 +9,15 @@ This project is used to demonstrate the use of RxJava with RxAndroid in Android 
 
 **Operators** 
 
-- [x] Create Operator
-- [x] Just Operator
-- [x] Interval Operator
-- [x] Timer Operator 
-- [x] Array Operator 
-- [x] Iterable Operator 
-- [x] Filter Operator 
-- [x] Distinct Operator 
+| Creational Operators  |     Filter Operators    | Transformation Operators |
+| --------------------  | ----------------------- | ------------------------ |
+| Create                | Filter                  | Map                      |
+| Just                  | Distinct                | Buffer                   |
+| Interval              |                         | Debounce                 |
+| Timer                 |                         | ThrottleFirst            |
+| Array                 |                         | FlatMap                  |
+| Iterable              |                         | ConcatMap                |
+|                       |                         | SwitchMap                |
 
 **Snapshot of demo**
 
