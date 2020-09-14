@@ -55,5 +55,10 @@
             android:icon="@drawable/ic_transformation"
             android:title="@string/str_buffer_operator" />
 
+        <item
+            android:id="@+id/flatMap_operator_id"
+            android:icon="@drawable/ic_transformation"
+            android:title="@string/str_flatMap_operator" />
+
     </group>
 </menu>

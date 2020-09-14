@@ -71,4 +71,10 @@
         android:label="@string/str_buffer_operator"
         tools:layout="@layout/fragment_operator_buffer" />
 
+    <fragment
+        android:id="@+id/flatMap_operator_id"
+        android:name="com.demo.code.ui.operators.transformationOperators.FlatMapOperatorFragment"
+        android:label="@string/str_flatMap_operator"
+        tools:layout="@layout/fragment_operator_flat_map" />
+
 </navigation>
