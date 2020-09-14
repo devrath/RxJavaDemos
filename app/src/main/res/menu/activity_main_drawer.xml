@@ -46,13 +46,14 @@
             android:title="@string/str_filter_operator" />
 
         <item
-            android:id="@+id/map_operator_id"
+            android:id="@+id/distinct_operator_id"
             android:icon="@drawable/ic_transformation"
             android:title="@string/str_map_operator" />
 
-
-
-
+        <item
+            android:id="@+id/buffer_operator_id"
+            android:icon="@drawable/ic_transformation"
+            android:title="@string/str_buffer_operator" />
 
     </group>
 </menu>

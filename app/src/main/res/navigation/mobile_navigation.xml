@@ -65,4 +65,10 @@
         android:label="@string/str_map_operator"
         tools:layout="@layout/fragment_operator_distinct" />
 
+    <fragment
+        android:id="@+id/buffer_operator_id"
+        android:name="com.demo.code.ui.operators.transformationOperators.BufferOperatorFragment"
+        android:label="@string/str_buffer_operator"
+        tools:layout="@layout/fragment_operator_buffer" />
+
 </navigation>

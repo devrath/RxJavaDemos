@@ -16,6 +16,7 @@
     <string name="str_create_operator">Create Operator</string>
     <string name="str_just_operator">Just Operator</string>
     <string name="str_map_operator">Map Operator</string>
+    <string name="str_buffer_operator">Buffer Operator</string>
     <string name="str_interval_operator">Interval Operator</string>
     <string name="str_timer_operator">Timer Operator</string>
     <string name="str_from_array_operator">From Array Operator</string>
