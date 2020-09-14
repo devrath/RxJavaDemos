@@ -46,9 +46,13 @@
             android:title="@string/str_filter_operator" />
 
         <item
-            android:id="@+id/distinct_operator_id"
-            android:icon="@drawable/ic_nine"
-            android:title="@string/str_distinct_operator" />
+            android:id="@+id/map_operator_id"
+            android:icon="@drawable/ic_transformation"
+            android:title="@string/str_map_operator" />
+
+
+
+
 
     </group>
 </menu>

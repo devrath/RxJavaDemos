@@ -1,34 +1,34 @@
-package com.demo.code.ui.operators
+package com.demo.code.ui.operators.creationalOperators
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.demo.code.R
-import com.demo.code.Utils.getArrayOfTasks
-import com.demo.code.databinding.FragmentOperatorFromArrayBinding
-import com.demo.code.models.Task
+import androidx.fragment.app.Fragment
+import com.demo.code.databinding.FragmentOperatorIntervalBinding
 import io.reactivex.Observable
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
-import java.util.*
+import java.util.concurrent.TimeUnit
 
-class FromArrayOperator : Fragment() {
+class IntervalOperatorFragment : Fragment() {
 
-    private val TAG = FromArrayOperator::class.java.simpleName
-    private var _binding: FragmentOperatorFromArrayBinding? = null
+    private val TAG = IntervalOperatorFragment::class.java.simpleName
+    private var _binding: FragmentOperatorIntervalBinding? = null
     private val binding get() = _binding!!
+
+    private val INTERVAL_PERIOD = 1L
+    private val MAXIMUM_PERIOD = 5L
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentOperatorFromArrayBinding.inflate(inflater, container, false)
+        _binding = FragmentOperatorIntervalBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -51,23 +51,27 @@ class FromArrayOperator : Fragment() {
     /**
      * Create the observable
      */
-    private fun createObservable(): Observable<Array<Task>> {
-        return Observable.fromArray(getArrayOfTasks())
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
+    private fun createObservable(): Observable<Long> {
+        return Observable.interval(INTERVAL_PERIOD, TimeUnit.SECONDS)
+                         .subscribeOn(Schedulers.io())
+                         .observeOn(AndroidSchedulers.mainThread())
+                         .takeWhile { value ->
+                             Timber.tag(TAG).d("Thread: %s",Thread.currentThread())
+                             value <= MAXIMUM_PERIOD
+                         }
     }
 
     /**
      * Subscribe to the observable
      */
     private fun subscribeToObservable() {
-        createObservable().subscribe(object : Observer<Array<Task>>{
+        createObservable().subscribe(object : Observer<Long>{
             override fun onSubscribe(d: Disposable) {
                 Timber.tag(TAG).d("Subscribe Invoked")
             }
 
-            override fun onNext(t: Array<Task>) {
-                Timber.tag(TAG).d("Value: %s", t.contentToString())
+            override fun onNext(t: Long) {
+                Timber.tag(TAG).d("Value: %s", t)
             }
 
             override fun onError(e: Throwable) {
@@ -77,8 +81,7 @@ class FromArrayOperator : Fragment() {
             override fun onComplete() {
                 Timber.tag(TAG).d("Task is complete")
             }
+
         })
     }
-
-
 }

@@ -1,12 +1,11 @@
-package com.demo.code.ui.operators
+package com.demo.code.ui.operators.creationalOperators
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.demo.code.Utils
-import com.demo.code.databinding.FragmentOperatorFromIterableBinding
+import com.demo.code.databinding.FragmentOperatorJustBinding
 import com.demo.code.models.Task
 import io.reactivex.Observable
 import io.reactivex.Observer
@@ -15,10 +14,11 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
 
-class FromIterableOperator : Fragment() {
 
-    private val TAG = FromIterableOperator::class.java.simpleName
-    private var _binding: FragmentOperatorFromIterableBinding? = null
+class JustOperatorFragment : Fragment(){
+
+    private val TAG = JustOperatorFragment::class.java.simpleName
+    private var _binding: FragmentOperatorJustBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -26,7 +26,7 @@ class FromIterableOperator : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentOperatorFromIterableBinding.inflate(inflater, container, false)
+        _binding = FragmentOperatorJustBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -47,25 +47,32 @@ class FromIterableOperator : Fragment() {
     }
 
     /**
-     * Create the observable
+     * Step1: Instantiate the object
      */
-    private fun createObservable(): Observable<Task> {
-        return Observable.fromIterable(Utils.getListOfTasks())
+    private fun instantiateObject(): Task {
+        return Task("Task1", false, 3)
+    }
+
+    /**
+     * Step2: Create the observable from the instantiated object
+     */
+    private fun createObservable() : Observable<Task> {
+        return Observable.just(instantiateObject())
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }
 
     /**
-     * Subscribe to the observable
+     * Step3: Subscribe to the observable and the emitted object
      */
     private fun subscribeToObservable() {
-        createObservable().subscribe(object : Observer<Task> {
+        createObservable().subscribe(object:Observer<Task>{
             override fun onSubscribe(d: Disposable) {
                 Timber.tag(TAG).d("Subscribe Invoked")
             }
 
             override fun onNext(t: Task) {
-                Timber.tag(TAG).d("Value: %s", t)
+                Timber.tag(TAG).d("ScreenCurrentTask: %s", t.taskName)
             }
 
             override fun onError(e: Throwable) {
@@ -73,8 +80,9 @@ class FromIterableOperator : Fragment() {
             }
 
             override fun onComplete() {
-                Timber.tag(TAG).d("Task is complete")
+                Timber.tag(TAG).d("Printing tasks are complete")
             }
         })
     }
+
 }

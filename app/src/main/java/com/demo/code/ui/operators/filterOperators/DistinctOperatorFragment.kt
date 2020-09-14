@@ -1,4 +1,4 @@
-package com.demo.code.ui.operators
+package com.demo.code.ui.operators.filterOperators
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,13 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.demo.code.Utils
 import com.demo.code.databinding.FragmentOperatorDistinctBinding
-import com.demo.code.databinding.FragmentOperatorFilterBinding
 import com.demo.code.models.Task
 import io.reactivex.Observable
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
-import io.reactivex.functions.Function
 import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
 

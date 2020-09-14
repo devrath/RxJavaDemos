@@ -13,50 +13,56 @@
 
     <fragment
         android:id="@+id/create_operator_id"
-        android:name="com.demo.code.ui.operators.CreateOperatorFragment"
+        android:name="com.demo.code.ui.operators.creationalOperators.CreateOperatorFragment"
         android:label="@string/str_create_operator"
         tools:layout="@layout/fragment_operator_create" />
 
     <fragment
         android:id="@+id/just_operator_id"
-        android:name="com.demo.code.ui.operators.JustOperatorFragment"
+        android:name="com.demo.code.ui.operators.creationalOperators.JustOperatorFragment"
         android:label="@string/str_just_operator"
         tools:layout="@layout/fragment_operator_just" />
 
     <fragment
         android:id="@+id/interval_operator_id"
-        android:name="com.demo.code.ui.operators.IntervalOperatorFragment"
+        android:name="com.demo.code.ui.operators.creationalOperators.IntervalOperatorFragment"
         android:label="@string/str_interval_operator"
         tools:layout="@layout/fragment_operator_interval" />
 
     <fragment
         android:id="@+id/timer_operator_id"
-        android:name="com.demo.code.ui.operators.TimerOperatorFragment"
+        android:name="com.demo.code.ui.operators.creationalOperators.TimerOperatorFragment"
         android:label="@string/str_timer_operator"
         tools:layout="@layout/fragment_operator_interval" />
 
     <fragment
         android:id="@+id/from_array_operator_id"
-        android:name="com.demo.code.ui.operators.FromArrayOperator"
+        android:name="com.demo.code.ui.operators.creationalOperators.FromArrayOperator"
         android:label="@string/str_from_array_operator"
         tools:layout="@layout/fragment_operator_from_array" />
 
     <fragment
         android:id="@+id/from_iterable_operator_id"
-        android:name="com.demo.code.ui.operators.FromIterableOperator"
+        android:name="com.demo.code.ui.operators.creationalOperators.FromIterableOperator"
         android:label="@string/str_from_array_operator"
         tools:layout="@layout/fragment_operator_from_iterable" />
 
     <fragment
         android:id="@+id/filter_operator_id"
-        android:name="com.demo.code.ui.operators.FilterOperatorFragment"
+        android:name="com.demo.code.ui.operators.filterOperators.FilterOperatorFragment"
         android:label="@string/str_filter_operator"
         tools:layout="@layout/fragment_operator_filter" />
 
     <fragment
         android:id="@+id/distinct_operator_id"
-        android:name="com.demo.code.ui.operators.DistinctOperatorFragment"
+        android:name="com.demo.code.ui.operators.filterOperators.DistinctOperatorFragment"
         android:label="@string/str_distinct_operator"
+        tools:layout="@layout/fragment_operator_distinct" />
+
+    <fragment
+        android:id="@+id/map_operator_id"
+        android:name="com.demo.code.ui.operators.transformationOperators.MapOperatorFragment"
+        android:label="@string/str_map_operator"
         tools:layout="@layout/fragment_operator_distinct" />
 
 </navigation>

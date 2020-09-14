@@ -1,34 +1,32 @@
-package com.demo.code.ui.operators
+package com.demo.code.ui.operators.creationalOperators
 
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import com.demo.code.databinding.FragmentOperatorTimerBinding
+import com.demo.code.Utils.getArrayOfTasks
+import com.demo.code.databinding.FragmentOperatorFromArrayBinding
+import com.demo.code.models.Task
 import io.reactivex.Observable
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
-import java.util.concurrent.TimeUnit
 
-class TimerOperatorFragment : Fragment() {
+class FromArrayOperator : Fragment() {
 
-    private val TAG = TimerOperatorFragment::class.java.simpleName
-    private var _binding: FragmentOperatorTimerBinding? = null
+    private val TAG = FromArrayOperator::class.java.simpleName
+    private var _binding: FragmentOperatorFromArrayBinding? = null
     private val binding get() = _binding!!
-
-    private val TIME_UNIT = TimeUnit.SECONDS
-    private val MAXIMUM_PERIOD = 5L
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentOperatorTimerBinding.inflate(inflater, container, false)
+        _binding = FragmentOperatorFromArrayBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -49,16 +47,25 @@ class TimerOperatorFragment : Fragment() {
     }
 
     /**
+     * Create the observable
+     */
+    private fun createObservable(): Observable<Array<Task>> {
+        return Observable.fromArray(getArrayOfTasks())
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+    }
+
+    /**
      * Subscribe to the observable
      */
     private fun subscribeToObservable() {
-        createObservable().subscribe(object : Observer<Long> {
+        createObservable().subscribe(object : Observer<Array<Task>>{
             override fun onSubscribe(d: Disposable) {
                 Timber.tag(TAG).d("Subscribe Invoked")
             }
 
-            override fun onNext(t: Long) {
-                Timber.tag(TAG).d("Value: %s", t)
+            override fun onNext(t: Array<Task>) {
+                Timber.tag(TAG).d("Value: %s", t.contentToString())
             }
 
             override fun onError(e: Throwable) {
@@ -71,12 +78,5 @@ class TimerOperatorFragment : Fragment() {
         })
     }
 
-    /**
-     * Create the observable
-     */
-    private fun createObservable() : Observable<Long> {
-        return Observable.timer(MAXIMUM_PERIOD,TIME_UNIT)
-                        .subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-    }
+
 }

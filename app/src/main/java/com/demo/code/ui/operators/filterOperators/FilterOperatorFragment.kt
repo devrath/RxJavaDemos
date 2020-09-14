@@ -1,25 +1,24 @@
-package com.demo.code.ui.operators
+package com.demo.code.ui.operators.filterOperators
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.demo.code.databinding.FragmentOperatorCreateBinding
+import com.demo.code.Utils.getListOfTasks
+import com.demo.code.databinding.FragmentOperatorFilterBinding
 import com.demo.code.models.Task
 import io.reactivex.Observable
-import io.reactivex.ObservableOnSubscribe
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
 
+class FilterOperatorFragment : Fragment() {
 
-class CreateOperatorFragment : Fragment() {
-
-    private val TAG = CreateOperatorFragment::class.java.simpleName
-    private var _binding: FragmentOperatorCreateBinding? = null
+    private val TAG = FilterOperatorFragment::class.java.simpleName
+    private var _binding: FragmentOperatorFilterBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -27,7 +26,7 @@ class CreateOperatorFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentOperatorCreateBinding.inflate(inflater, container, false)
+        _binding = FragmentOperatorFilterBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -43,36 +42,22 @@ class CreateOperatorFragment : Fragment() {
 
     private fun onClickListeners() {
         binding.floatingActionButton.setOnClickListener {
-            init()
+            subscribeToObservable()
         }
     }
 
-    private fun init() {
-        subscribeToObservable()
-    }
-
     /**
-     * Step1: Instantiate the object
+     * Create the observable
      */
-    private fun instantiateObject(): Task {
-        return  Task("Task1", false, 3)
+    private fun createObservable() : Observable<Task>{
+        return Observable.fromIterable(getListOfTasks())
+                    .subscribeOn(Schedulers.io())
+                    .filter { it.taskIsCompleted }
+                    .observeOn(AndroidSchedulers.mainThread())
     }
 
     /**
-     * Step2: Create the observable from the instantiated object
-     */
-    private fun createObservable(): Observable<Task> {
-        return Observable.create(ObservableOnSubscribe<Task> { emitter ->
-            if (!emitter.isDisposed) {
-                emitter.onNext(instantiateObject())
-                emitter.onComplete()
-            }
-        }).subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-    }
-
-    /**
-     * Step3: Subscribe to the observable and the emitted object
+     * Subscribe to the observable
      */
     private fun subscribeToObservable() {
         createObservable().subscribe(object : Observer<Task>{
@@ -81,7 +66,7 @@ class CreateOperatorFragment : Fragment() {
             }
 
             override fun onNext(t: Task) {
-                Timber.tag(TAG).d("ScreenCurrentTask: %s", t.taskName)
+                Timber.tag(TAG).d("Value: %s", t)
             }
 
             override fun onError(e: Throwable) {
@@ -89,10 +74,8 @@ class CreateOperatorFragment : Fragment() {
             }
 
             override fun onComplete() {
-                Timber.tag(TAG).d("Printing tasks are complete")
+                Timber.tag(TAG).d("Task is complete")
             }
         })
     }
-
-
 }
