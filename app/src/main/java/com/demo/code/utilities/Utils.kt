@@ -1,4 +1,4 @@
-package com.demo.code
+package com.demo.code.utilities
 
 import com.demo.code.models.Task
 

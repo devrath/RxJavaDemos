@@ -1,12 +1,11 @@
 package com.demo.code.ui.operators.transformationOperators
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.demo.code.Utils.getListOfTasks
+import com.demo.code.utilities.Utils.getListOfTasks
 import com.demo.code.databinding.FragmentOperatorMapBinding
 import com.demo.code.models.Task
 import io.reactivex.Observable

@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.demo.code.Utils.getArrayOfTasks
+import com.demo.code.utilities.Utils.getArrayOfTasks
 import com.demo.code.databinding.FragmentOperatorFromArrayBinding
 import com.demo.code.models.Task
 import io.reactivex.Observable

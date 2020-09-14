@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.demo.code.Utils
+import com.demo.code.utilities.Utils
 import com.demo.code.databinding.FragmentOperatorBufferBinding
 import com.demo.code.models.Task
 import io.reactivex.Observable
